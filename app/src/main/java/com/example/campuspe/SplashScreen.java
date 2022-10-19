@@ -44,4 +44,24 @@ public class SplashScreen extends Activity {
         startActivity(new Intent(this, LoginActivity.class));
         finish();
     }
+     protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_splash_screen);
+        try {
+            VideoView videoHolder = findViewById(R.id.videoViewRelative);
+
+            Uri video = Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.splash);
+            videoHolder.setVideoURI(video);
+
+            videoHolder.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                public void onCompletion(MediaPlayer mp) {
+                    jump();
+                }
+            });
+            videoHolder.start();
+        } catch (Exception ex) {
+            jump();
+        }
+    }
+
 }
