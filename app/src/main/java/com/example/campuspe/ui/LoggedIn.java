@@ -94,6 +94,14 @@ ProgressBar progressBar;
 
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+         Log.d(TAG, "onDataChange():" + dataSnapshot.toString());
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    CanteenData canteenData = snapshot.getValue(CanteenData.class);
+                    canteenList.add(canteenData);
+
+                }
+                progressBar.setVisibility(View.INVISIBLE);
+
         recyclerView.addItemDecoration(new DividerItemDecoration(getApplicationContext(), DividerItemDecoration.VERTICAL));
         listAdapter = new ListAdapter(getApplicationContext(),canteenList);
         recyclerView.setAdapter(listAdapter);
