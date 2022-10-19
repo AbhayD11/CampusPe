@@ -87,6 +87,8 @@ public class UserProfile extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), RewardActivity.class);
                 startActivity(intent);
+                       perName.setVisibility(View.INVISIBLE);
+                editPerName.setVisibility(View.VISIBLE);
             }
         });
 
@@ -123,6 +125,8 @@ public class UserProfile extends AppCompatActivity {
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                       perName.setVisibility(View.INVISIBLE);
+                editPerName.setVisibility(View.VISIBLE);
                 FirebaseAuth.getInstance().signOut();
                 Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
 startActivity(intent);
